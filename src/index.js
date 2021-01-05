@@ -3,48 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-//Create a store from redux library
-import {createStore} from 'redux';
+import {createStore} from 'redux'; //step 1 is to import createStore from redux.
+import allReducer from './reducers';
 
-//STORE -> GLOBALIZED STATE
-
-
-//ACTION  --This describes the thing you want to do.
-const increment = () => {
-  return {
-    type: 'INCREMENT'
-  }
-}
-
-const decrement = () => {
-  return {
-    type: 'DECREMENT'
-  }
-}
-
-//REDUCER
-const counter = (state = 0, action) => {
-  switch(action.type){
-    case 'INCREMENT':
-        return state + 1;
-    case 'DECREMENT':
-        return state - 1;
-  }
-};
-
-let store = createStore(counter);
-
-//Display in the console
-store.subscribe(() => console.log(store.getState()));
-
-//DISPATCH
-store.dispatch(increment()); //First action called---value is now 1.
-store.dispatch(increment()); //Second action called---value is now 2.
-store.dispatch(decrement()); //Third action called---value is now 1.
-
-
-
-
+const store = createStore(allReducer);
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
